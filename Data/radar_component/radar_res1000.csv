@@ -1,0 +1,4 @@
+,Frames with Obstacle(s),Number of Obstacle(s),Distance to Obstacle(s) m,Max Difference from Actual Location m
+UWSim Scenario Easy,2000,1,5 – 50,0.05
+UWSim Scenario Medium,2000,2,5 – 50,0.05
+UWSim Scenario Hard,2000,5,5 – 50,0.05

@@ -1,0 +1,264 @@
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[11pt, oneside, table, xcdraw]{Thesis} % The default font size and one-sided printing (no margin offsets)
+
+\graphicspath{{Figures/}} % Specifies the directory where pictures are stored
+
+%% for the plots
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{pgfplotstable,filecontents}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{booktabs,colortbl}
+\usepackage{graphicx}
+\usepackage{rotating}
+\usepackage{float}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{lscape}
+\allowdisplaybreaks
+\usepackage{array}
+\usepackage{booktabs}
+\setlength{\heavyrulewidth}{1.5pt}
+\setlength{\abovetopsep}{4pt}
+\setcounter{MaxMatrixCols}{16}
+
+\usepackage[square, numbers, comma, sort&compress]{natbib} % Use the natbib reference package - read up on this to edit the reference style; if you want text (e.g. Smith et al., 2012) for the in-text references (instead of numbers), remove 'numbers' 
+\hypersetup{urlcolor=blue, colorlinks=true} % Colors hyperlinks in blue - change to black if annoying
+\title{\ttitle} % Defines the thesis title - don't touch this
+
+\begin{document}
+
+\frontmatter % Use roman page numbering style (i, ii, iii, iv...) for the
+% pre-content pages
+
+\setstretch{1.3} % Line spacing of 1.3
+
+% Define the page headers using the FancyHdr package and set up for one-sided printing
+\fancyhead{} % Clears all page headers and footers
+\rhead{\thepage} % Sets the right side header to show the page number
+\lhead{} % Clears the left side page header
+
+\pagestyle{fancy} % Finally, use the "fancy" page style to implement the FancyHdr headers
+
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}} % New command to make the lines in the title page
+
+% PDF meta-data
+\hypersetup{pdftitle={Detection of Motion Faults and Robust control of an
+Omnidirectional Robot Using Machine Learning}}
+\hypersetup{pdfsubject=\subjectname}
+\hypersetup{pdfauthor=Chaitanya Hebbal & Youssef Mahmoud}
+\hypersetup{pdfkeywords=\keywordnames}
+
+%----------------------------------------------------------------------------------------
+%	TITLE PAGE
+%----------------------------------------------------------------------------------------
+
+\begin{titlepage}
+\begin{center}
+
+\includegraphics[width=0.59\textwidth]{./logos/hbrs-logo.jpg}
+
+\textsc{\Large Research \& Development Project Report}\\[0.5cm] % Thesis type
+
+\HRule \\[0.4cm] % Horizontal line
+{\huge \bfseries Detection of Motion Faults and Robust control of an
+Omnidirectional Robot Using Machine Learning}\\[0.4cm] % Thesis title
+\HRule \\[1.5cm] % Horizontal line
+ 
+\vspace{-5mm}
+\begin{minipage}{0.4\textwidth}
+\begin{flushleft} \large
+\vspace{-5mm}
+\emph{Authors:}\\
+\textcolor{blue}{Chaitanya Hebbal} \\chaitanya.hebbal@smail.inf.h-brs.de \\Matrikel Nr: 9027159 \\\textcolor{blue} {Youssef Mahmoud} % Author name - remove the \href bracket to remove the link
+\\yousef\_mahmoud@live.com
+\\Matrikel Nr: 9024421
+\end{flushleft}
+\end{minipage}
+\hspace{12mm}
+\begin{minipage}{0.4\textwidth}
+\begin{flushright} \large
+\emph{Supervisors:} \\
+\textcolor{blue}{Prof. Dr. Paul Plöger} \\paul.ploeger@h-brs.de \\\textcolor{blue}{M.Sc. Anastassia K\"ustenmacher} \\anastassia.kuestenmacher@h-brs.de % Supervisor name - remove the \href bracket to remove the link  
+\end{flushright}
+\end{minipage}\\[3cm]
+ 
+\large \textit{A report submitted in fulfilment of the completion\\ for the
+R\& D Project}\\[0.3cm] %University requirement text
+\textit{in}\\[0.4cm]
+Bonn-Rhein-Sieg University of Applied Sciences\\Department of Computer Science\\[2cm] % Research group name and department name
+ 
+{\large \today}\\[4cm] % Date
+ 
+\vfill
+\end{center}
+\end{titlepage}
+
+%----------------------------------------------------------------------------------------
+%	DECLARATION PAGE
+%	Your institution may give you a different text to place here
+%----------------------------------------------------------------------------------------
+
+\Declaration{
+
+\addtocontents{toc}{\vspace{1em}} % Add a gap in the Contents, for aesthetics
+
+This R\&D project report titled, 'Detection of Motion Faults and Robust control
+of an Omnidirectional Robot Using Machine Learning' and the work presented has been completed in cooperation of Youssef Mahmoud \&
+Chaitanya Hebbal. We as contributors confirm that:
+
+\begin{itemize} 
+\item[\tiny{$\blacksquare$}] This work was done wholly or mainly while in
+candidature for a master degree at this University.
+\item[\tiny{$\blacksquare$}] Where any part of this report has previously been
+submitted for a degree or any other qualification at this University or any other institution, this has been clearly stated.
+\item[\tiny{$\blacksquare$}] Where we have consulted the published work of
+others, this is always clearly attributed.
+\item[\tiny{$\blacksquare$}] Where we have quoted from the work of others, the
+source is always given. With the exception of such quotations, this report is
+entirely our own work.
+\item[\tiny{$\blacksquare$}] We have acknowledged all main sources of help.
+\item[\tiny{$\blacksquare$}] The project work was completely done in cooperation by both authors. However, report writing was split up by both authors as follows: The Chapters \ref{Chapter1}, \ref{Chapter6}, \&
+\ref{Chapter8} were authored by Youssef Mahmoud. The chapters \ref{Chapter2},
+\ref{Chapter4}, \& \ref{Chapter5} were authored by Chaitanya Hebbal
+\\
+\end{itemize}
+ 
+Signatures:\\
+\rule[1em]{25em}{0.5pt} % This prints a line for the signature
+ 
+Date:\\
+\rule[1em]{25em}{0.5pt} % This prints a line to write the date
+}
+
+\clearpage % Start a new page
+%----------------------------------------------------------------------------------------
+%	ABSTRACT PAGE
+%----------------------------------------------------------------------------------------
+
+\addtotoc{Abstract} % Add the "Abstract" page entry to the Contents
+
+\abstract{\addtocontents{toc}{\vspace{1em}} % Add a gap in the Contents, for
+% aesthetics
+
+Autonomous mobile robots are becoming more relevant in applications where human life can be at risk. Applications such as space exploration, search and rescue, fire fighting put human life in extreme danger. With the increase of dependence on these autonomous robots, the more complicated the tasks that are to be executed become, and a bigger number of software and hardware components are involved. With that being said, the occurence of faults is inevitable. 
+
+The ability of detecting faults and identifying them is an integral part in making any mobile platform more autonomous. Many efforts have been made previously to propose solutions on how to tackle this problem, however, a complete solution is not yet available. This research and development project aims to build a strong foundation for detection of motion faults and robust control of an omnidirectional robot. Since omnidirectional robots have the advantage of high maneuverability and mobility, they are of high interest to current research. 
+
+This project proposes the accurate kinematic and dynamic modelling of a four wheeled omnidirectional platform in order to use them for fault detection, robust control, and simulation purposes. The accurate development of these models is crucial to the process of making the mobile platform more autonomous since these models can predict the correct behaviour of the platform. A kinematic and dynamic model with very high accuracy have been developed and tested for different scenarios using the Kuka YouBot and a velocity controller was successfuly implemented on the dynamic model.
+\clearpage % Start a new page
+
+%----------------------------------------------------------------------------------------
+%	ACKNOWLEDGEMENTS
+%----------------------------------------------------------------------------------------
+
+\setstretch{1.3} % Reset the line-spacing to 1.3 for body text (if it has changed)
+
+\acknowledgements{\addtocontents{toc}{\vspace{1em}} % Add a gap in the Contents, for aesthetics
+
+We would like to thank our supervisors Prof. Paul Ploeger and M.Sc. Anastassia Kuestenmacher for their continued support. They have given us plenty of their time and guidance in order to steer us in the right direction. We would also like to thank the Bonn-Rhein-Sieg Univerisy of Applied Sciences RoboCup team for their effort and guidance while using the youBot. We would also like to thank Alex, Santosh and Boris for helping us in gathering  the data. Finally, we would like to thank our families and friends for their support throughout the project.
+}
+
+
+
+
+\clearpage
+% Start a new page
+
+%----------------------------------------------------------------------------------------
+%	LIST OF CONTENTS/FIGURES/TABLES PAGES
+%----------------------------------------------------------------------------------------
+
+\pagestyle{fancy} % The page style headers have been "empty" all this time, now use the "fancy" headers as defined before to bring them back
+
+\lhead{\emph{Contents}} % Set the left side page header to "Contents"
+\tableofcontents % Write out the Table of Contents
+
+
+%----------------------------------------------------------------------------------------
+%	THESIS CONTENT - CHAPTERS
+%----------------------------------------------------------------------------------------
+
+\mainmatter % Begin numeric (1,2,3...) page numbering
+
+\pagestyle{fancy} % Return the page headers back to the "fancy" style
+
+% Include the chapters of the thesis as separate files from the Chapters folder
+% Uncomment the lines as you write the chapters
+
+\input{Chapters/Chapter1}
+\input{Chapters/Chapter2}
+%\input{Chapters/Chapter3}
+\input{Chapters/Chapter4}
+\input{Chapters/Chapter5} 
+\input{Chapters/Chapter6} 
+%\input{Chapters/Chapter7} 
+\input{Chapters/Chapter8} 
+
+%----------------------------------------------------------------------------------------
+%	THESIS CONTENT - APPENDICES
+%----------------------------------------------------------------------------------------
+
+\lhead{\emph{List of Figures}} % Set the left side page header to "List of Figures"
+\listoffigures % Write out the List of Figures
+
+\lhead{\emph{List of Tables}} % Set the left side page header to "List of Tables"
+\listoftables % Write out the List of Tables
+
+%----------------------------------------------------------------------------------------
+%	ABBREVIATIONS
+%----------------------------------------------------------------------------------------
+
+\clearpage % Start a new page
+
+\setstretch{1.5} % Set the line spacing to 1.5, this makes the following tables easier to read
+
+%\lhead{\emph{Abbreviations}} % Set the left side page header to "Abbreviations"
+%\listofsymbols{ll} % Include a list of Abbreviations (a table of two columns)
+%{
+%\textbf{USV} & \textbf{U}nmanned \textbf{S}urface \textbf{V}ehicle \\
+%
+%}
+
+%----------------------------------------------------------------------------------------
+%	DEDICATION
+%----------------------------------------------------------------------------------------
+
+\setstretch{1.3} % Return the line spacing back to 1.3
+
+\pagestyle{empty} % Page style needs to be empty for this page
+
+\addtocontents{toc}{\vspace{2em}} % Add a gap in the Contents, for aesthetics
+
+\addtocontents{toc}{\vspace{2em}} % Add a gap in the Contents, for aesthetics
+
+\appendix % Cue to tell LaTeX that the following 'chapters' are Appendices
+
+% Include the appendices of the thesis as separate files from the Appendices folder
+% Uncomment the lines as you write the Appendices
+
+\input{Appendices/AppendixA}
+%\input{Appendices/AppendixB}
+\input{Appendices/AppendixC}
+
+\addtocontents{toc}{\vspace{2em}} % Add a gap in the Contents, for aesthetics
+
+\backmatter
+
+%----------------------------------------------------------------------------------------
+%	BIBLIOGRAPHY
+%----------------------------------------------------------------------------------------
+
+\label{Bibliography}
+
+\lhead{\emph{Bibliography}} % Change the page header to say "Bibliography"
+
+\bibliographystyle{unsrtnat} % Use the "unsrtnat" BibTeX style for formatting the Bibliography
+
+\bibliography{Bibliography} % The references (bibliography) information are stored in the file named "Bibliography.bib"
+
+\end{document}  

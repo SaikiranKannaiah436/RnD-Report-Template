@@ -1,0 +1,7 @@
+,Frames with Obstacle(s),Number of Obstacle(s),Distance to Obstacle(s) m, False Detections , Percentage
+Real-Data Medium-2 ,10900,1,200,2368,21.72
+Real-Data Easy-2   ,4705,2,500,0,0
+Real-Data Easy-1   ,8010,1,500,0,0
+Simulation-Data Easy ,2000,1,100-200,0,0
+Simulation-Data Medium ,2000,2,100-200,0,0
+Simulation-Data Hard ,2000,5,100-200,61,3.05
